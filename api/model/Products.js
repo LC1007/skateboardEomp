@@ -2,7 +2,7 @@ const db = require('../config')
 
 class Products{
     fetchProducts(req, res){
-        const query = 'SELECT * FROM Skateboards;'
+        const query = 'SELECT * FROM skateboards;'
 
         db.query(query, (err, results) =>{
             if(err) throw err
