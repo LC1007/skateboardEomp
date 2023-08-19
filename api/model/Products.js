@@ -57,7 +57,7 @@ class Products{
         const query = `DELETE FROM skateboards WHERE skateID = ?`
         const { skateID } = req.params
 
-        db.query(query, [skateID], (err, result) =>{
+        db.query(query, [skateID], (err) =>{
             if(err) throw err
             res.json({
                 status: res.statusCode,
