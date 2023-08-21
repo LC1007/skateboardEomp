@@ -33,18 +33,18 @@ class Users{
     async registerUser(req, res){
         const data = req.body
 
-        data.userPass = await hash(data.userPass, 10)
+        data.hashedPassword = await hash(data.userPass, 10)
 
         const user = {
             emailPass: data.userPass,
-            userPass: data.userPass
+            hashedPassword: data.hashedPassword
         }
         const query = `INSERT INTO Users SET ?`
 
         db.query(query, [data], (err, results) =>{
             if(err) throw err
             let token = createToken(user)
-            res.cookie('Legit User', token,{
+            res.cookie('legitUser', token,{
                 httpOnly: true,
                 maxAge: 3600000
             })
