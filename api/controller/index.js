@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express()
-const { products } = require('../model')
+const { products, users } = require('../model')
 const bodyParser = require('body-parser')
 
 router.get('/products', (req, res) =>{
@@ -21,6 +21,10 @@ router.patch('/products/:skateID', bodyParser.json(), (req, res) =>{
 
 router.delete('/products/:skateID', (req, res) =>{
     products.deleteProduct(req, res)
+})
+
+router.post('/user', bodyParser.json(), (req, res) =>{
+    users.registerUser(req, res)
 })
 
 module.exports = {
