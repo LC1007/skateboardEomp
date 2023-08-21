@@ -44,6 +44,10 @@ class Users{
         db.query(query, [data], (err, results) =>{
             if(err) throw err
             let token = createToken(user)
+            res.cookie('Legit User', token,{
+                httpOnly: true,
+                maxAge: 3600000
+            })
             res.json({
                 status: res.statusCode,
                 token,
