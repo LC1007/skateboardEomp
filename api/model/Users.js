@@ -41,7 +41,7 @@ class Users{
         }
         const query = `INSERT INTO Users SET ?`
 
-        db.query(query, [data], (err) =>{
+        db.query(query, [data], (err, results) =>{
             if(err) throw err
             let token = createToken(user)
             res.json({
